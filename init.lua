@@ -279,6 +279,16 @@ require("lazy").setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- Set the number of space characters inserted for indentation
+vim.o.shiftwidth = 4 -- Replace 4 with your desired number of spaces for indentation
+vim.o.tabstop = 4    -- Replace 4 with your desired number of spaces for a tab
+
+-- If you want to use spaces instead of actual tab characters, also add:
+vim.o.expandtab = true -- Convert tabs to spaces
+
+-- Setting maximum line length
+vim.o.textwidth = 160
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -329,7 +339,7 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 local harpoon = require "harpoon"
