@@ -665,12 +665,32 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require("lspconfig")[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
+    -- Check if the current server is Volar
+    if server_name == "volar" then
+      require("lspconfig")[server_name].setup {
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          -- Disable formatting for Volar
+          client.resolved_capabilities.document_formatting = false
+          client.resolved_capabilities.document_range_formatting = false
+
+          -- Call the general on_attach function if it exists
+          if type(on_attach) == "function" then
+            on_attach(client, bufnr)
+          end
+        end,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      }
+    else
+      -- Setup for other servers
+      require("lspconfig")[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      }
+    end
   end,
 }
 
