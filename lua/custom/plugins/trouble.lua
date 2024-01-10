@@ -1,3 +1,4 @@
+local wk = require "which-key"
 return {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -26,4 +27,14 @@ return {
 			require("trouble").toggle "lsp_references"
 		end)
 	end,
+	wk.register {
+		["<leader>x"] = {
+			name = "+trouble",
+			x = { "toggle" },
+			w = { "workspace diagnostics" },
+			d = { "document diagnostics" },
+			q = { "quick fix" },
+			l = { "loclist" },
+		},
+	},
 }
