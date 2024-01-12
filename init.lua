@@ -279,6 +279,7 @@ require("lazy").setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+vim.o.fileformats = "unix"
 -- Set the number of space characters inserted for indentation
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
