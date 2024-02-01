@@ -125,6 +125,7 @@ require("lazy").setup({
         delete = { text = "_" },
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
+        untracked = { text = "┆" },
       },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -570,27 +571,26 @@ require("which-key").register {
   ["<leader>a"] = { name = "Harpoon [A]dd", _ = "which_key_ignore" },
 }
 -- vim fugitive bindings
-vim.keymap.set("n", "<leader>fd", function()
+vim.keymap.set("n", "<leader>Gd", function()
   vim.api.nvim_command "Gvdiffsplit!"
 end, {})
-vim.keymap.set("n", "<leader>fr", function()
+vim.keymap.set("n", "<leader>Gr", function()
   vim.api.nvim_command "diffget //3"
 end, {})
-vim.keymap.set("n", "<leader>fl", function()
+vim.keymap.set("n", "<leader>Gl", function()
   vim.api.nvim_command "diffget //2"
 end, {})
-vim.keymap.set("n", "<leader>fw", function()
+vim.keymap.set("n", "<leader>Ga", function()
   vim.api.nvim_command "Gwrite"
 end, {})
 
 require("which-key").register {
-  ["<leader>f"] = {
+  ["<leader>G"] = {
     name = "+fugitive",
     d = { "verticle diff split" },
     r = { "diffget right" },
     l = { "diffget left" },
-    w = { "Gwrite" },
-    o = { "show last test output" },
+    a = { "Gwrite" },
   },
 }
 -- register which-key VISUAL mode

@@ -12,6 +12,7 @@ return {
 			vim.keymap.set("n", "<leader>e", function()
 				vim.api.nvim_command "Neotree filesystem reveal=true toggle=true right"
 			end, {}),
+			vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {}),
 		}
 	end,
 }
