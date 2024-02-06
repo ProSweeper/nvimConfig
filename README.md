@@ -21,8 +21,7 @@ Distribution Alternatives:
 
 ### Installation
 
-> **NOTE**
-> [Backup](#FAQ) your previous configuration (if any exists)
+> **NOTE** > [Backup](#FAQ) your previous configuration (if any exists)
 
 Requirements:
 

@@ -181,8 +181,8 @@ require("lazy").setup({
         end, { desc = "git diff against last commit" })
 
         -- Toggles
-        map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "toggle git blame line" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "toggle git show deleted" })
+        map("n", "<leader>gb", gs.toggle_current_line_blame, { desc = "toggle git blame line" })
+        map("n", "<leader>gd", gs.toggle_deleted, { desc = "toggle git show deleted" })
 
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "select git hunk" })
@@ -197,7 +197,7 @@ require("lazy").setup({
     config = function()
       vim.cmd.colorscheme "onedark"
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+      -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
       vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
       vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
       vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -280,11 +280,14 @@ require("lazy").setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
-vim.o.fileformats = "unix"
+-- vim.o.fileformats = "unix"
 -- Set the number of space characters inserted for indentation
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
+vim.o.eol = true
+vim.o.fixeol = true
+vim.opt.colorcolumn = "81"
 -- If you want to use spaces instead of actual tab characters, also add:
 vim.o.expandtab = true -- Convert tabs to spaces
 
@@ -296,6 +299,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -337,6 +341,48 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Move selected lines with shift+j or shift+k
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Join line while keeping the cursor in the same position
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Keep cursor centred while scrolling up and down
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Unsure what this does, tbh
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Undotree
+vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)
+
+-- Oil
+vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { desc = "Oil" })
+
+-- Twilight
+vim.keymap.set("n", "<leader>Tt", "<cmd>Twilight<CR>", { desc = "Toggle Twilight" })
+
+-- Zen mode
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
+
+-- Tmux window switching from Neovim
+vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
+vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
+vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
+
+-- Neovim Pet
+vim.keymap.set("n", "<leader>;", function()
+  require("duck").hatch("🐿️", 2)
+end, {})
+
+vim.keymap.set("n", "<leader>;;", function()
+  require("duck").cook()
+end, {})
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -441,7 +487,24 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 vim.defer_fn(function()
   require("nvim-treesitter.configs").setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "javascript", "typescript", "vimdoc", "vim", "bash", "jsdoc", "vue", "css", "scss" },
+    ensure_installed = {
+      "c",
+      "cpp",
+      "go",
+      "lua",
+      "python",
+      "rust",
+      "tsx",
+      "javascript",
+      "typescript",
+      "vimdoc",
+      "vim",
+      "bash",
+      "jsdoc",
+      "vue",
+      "css",
+      "scss",
+    },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -501,12 +564,6 @@ vim.defer_fn(function()
       },
       swap = {
         enable = true,
-        swap_next = {
-          ["<leader>p"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>P"] = "@parameter.inner",
-        },
       },
     },
   }
@@ -725,9 +782,10 @@ cmp.setup {
     end, { "i", "s" }),
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "path" },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "path",     group_index = 2 },
+    { name = "copilot",  group_index = 2 },
+    { name = "luasnip",  group_index = 2 },
   },
 }
 
