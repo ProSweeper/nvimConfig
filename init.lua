@@ -192,10 +192,11 @@ require("lazy").setup({
 
   {
     -- Theme inspired by Atom
-    "navarasu/onedark.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "onedark"
+      vim.cmd.colorscheme "catppuccin"
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
       -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
       vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
@@ -280,13 +281,13 @@ require("lazy").setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
--- vim.o.fileformats = "unix"
+vim.o.fileformats = "unix"
 -- Set the number of space characters inserted for indentation
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
 vim.o.eol = true
-vim.o.fixeol = true
+vim.o.fixeol = false
 vim.opt.colorcolumn = "81"
 -- If you want to use spaces instead of actual tab characters, also add:
 vim.o.expandtab = true -- Convert tabs to spaces

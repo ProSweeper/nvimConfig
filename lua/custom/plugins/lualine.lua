@@ -15,14 +15,14 @@ return {
 		return {
 			options = {
 				icons_enabled = true,
-				theme = "onedark",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				theme = "catppuccin",
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					winbar = {},
 				},
 				ignore_focus = {},
-				always_divide_middle = true,
+				always_divide_middle = false,
 				globalstatus = false,
 				refresh = {
 					statusline = 1000,
@@ -34,40 +34,40 @@ return {
 				lualine_a = {
 					{
 						"mode",
-						icon = "",
-						separator = { left = "", right = "" },
-						color = {
-							fg = "#1c1d21",
-							bg = "#b4befe",
-						},
+						icon = "",
+						separator = { left = "", right = "" },
+						-- color = {
+						-- 	fg = "#1c1d21",
+						-- 	bg = "#b4befe",
+						-- },
 					},
 				},
 				lualine_b = {
 					{
 						"branch",
 						icon = "",
-						separator = { left = "", right = "" },
-						color = {
-							fg = "#1c1d21",
-							bg = "#7d83ac",
-						},
+						separator = { left = "", right = "" },
+						-- color = {
+						-- fg = "#1c1d21",
+						-- bg = "#7d83ac",
+						-- },
 					},
 					{
 						"diff",
-						separator = { left = "", right = "" },
-						color = {
-							fg = "#1c1d21",
-							bg = "#7d83ac",
-						},
+						separator = { left = "", right = "" },
+						-- color = {
+						-- fg = "#1c1d21",
+						-- bg = "#7d83ac",
+						-- },
 					},
 				},
 				lualine_c = {
 					{
 						"diagnostics",
-						separator = { left = "", right = "" },
-						color = {
-							bg = "#45475a",
-						},
+						separator = { left = "", right = "" },
+						-- color = {
+						-- bg = "#45475a",
+						-- },
 					},
 					{
 						"filename",
@@ -97,31 +97,32 @@ return {
 							spinners = require("copilot-lualine.spinners").dots,
 							spinner_color = "#6272A4",
 						},
-						show_colors = false,
+						show_colors = true,
 						show_loading = true,
 					},
-					"encoding",
-					"fileformat",
-					"filetype",
+					-- "encoding",
+					-- "fileformat",
+					-- "filetype",
 				},
 				lualine_y = {
 					{
 						"filetype",
 						icons_enabled = true,
-						color = {
-							fg = "#1C1D21",
-							bg = "#eba0ac",
-						},
+						-- color = {
+						-- fg = "#1C1D21",
+						-- bg = "#eba0ac",
+						-- },
 					},
+					"fileformat",
 				},
 				lualine_z = {
 					{
 						"location",
 						icon = "",
-						color = {
-							fg = "#1c1d21",
-							bg = "#f2cdcd",
-						},
+						-- color = {
+						-- 	fg = "#1c1d21",
+						-- 	bg = "#f2cdcd",
+						-- },
 					},
 				},
 			},
