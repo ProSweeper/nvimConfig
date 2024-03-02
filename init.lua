@@ -4,142 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
-vim.o.fileformats = "unix"
--- Set the number of space characters inserted for indentation
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-
-vim.o.eol = true
-vim.o.fixeol = false
-vim.opt.colorcolumn = "81"
--- If you want to use spaces instead of actual tab characters, also add:
-vim.o.expandtab = true -- Convert tabs to spaces
-vim.o.conceallevel = 1
--- Setting maximum line length
-vim.o.textwidth = 160
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
-vim.wo.number = true
-vim.opt.relativenumber = true
-
--- Enable mouse mode
-vim.o.mouse = "a"
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = "unnamedplus"
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Don't show the mode, since it's already in status line
-vim.opt.showmode = false
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = "yes"
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Move selected lines with shift+j or shift+k
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Join line while keeping the cursor in the same position
-vim.keymap.set("n", "J", "mzJ`z")
-
--- Keep cursor centred while scrolling up and down
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- Unsure what this does, tbh
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- Undotree
-vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)
-
--- Oil
-vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { desc = "Oil" })
-
--- Twilight
-vim.keymap.set("n", "<leader>Tt", "<cmd>Twilight<CR>", { desc = "Toggle Twilight" })
-
--- Zen mode
-vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
-
--- Tmux window switching from Neovim
-vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
-vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
-vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
-vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
-
--- Neovim Pet
-vim.keymap.set("n", "<leader>;", function()
-  require("duck").hatch("🐿️", 2)
-end, {})
-
-vim.keymap.set("n", "<leader>;;", function()
-  require("duck").cook()
-end, {})
-
--- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -313,29 +177,6 @@ require("lazy").setup({
       vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
       vim.api.nvim_set_hl(0, "Comment", { fg = "#FFFFFF" })
     end,
-  },
-
-  {
-    -- Set lualine as statusline
-    "nvim-lualine/lualine.nvim",
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = true,
-        theme = "catppuccin",
-        component_separators = "|",
-        section_separators = "",
-      },
-    },
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = "ibl",
-    opts = {},
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -830,7 +671,7 @@ require("lazy").setup({
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   -- require "kickstart.plugins.autoformat",
-  -- require "kickstart.plugins.debug",
+  require "kickstart.plugins.debug",
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -971,5 +812,11 @@ require("neodev").setup {
   library = { plugins = { "neotest" }, types = true },
 }
 
+
+-- [[ Setting options ]]
+require 'options'
+
+-- [[ Basic Keymaps ]]
+require 'keymaps'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
