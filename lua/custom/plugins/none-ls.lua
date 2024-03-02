@@ -10,6 +10,7 @@ return {
 				null_ls.builtins.formatting.csharpier,
 				null_ls.builtins.diagnostics.gitlint,
 				null_ls.builtins.diagnostics.stylint,
+				null_ls.builtins.diagnostics.tsc,
 				null_ls.builtins.completion.spell,
 				null_ls.builtins.completion.tags,
 				null_ls.builtins.code_actions.gitsigns,
