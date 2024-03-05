@@ -12,7 +12,7 @@ return {
     build = function()
       vim.notify "Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim."
     end,
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     keys = {
       { '<leader>ccb', ':CopilotChatBuffer ', desc = 'CopilotChat - Chat with current buffer' },
       { '<leader>cce', '<cmd>CopilotChatExplain<cr>', desc = 'CopilotChat - Explain code' },
@@ -41,8 +41,48 @@ return {
       },
       {
         '<leader>ccr',
-        '<cmd>CopilotChatReset<cr>', -- Reset chat history and clear buffer.
+
         desc = 'CopilotChat - Reset chat history and clear buffer',
+      },
+      {
+        '<leader>ccq',
+        function()
+          local input = vim.fn.input 'Quick Chat: '
+          if input ~= '' then
+            vim.cmd('CopilotChatBuffer ' .. input)
+          end
+        end,
+        desc = 'CopilotChat - Quick chat',
+      },
+      {
+        'CopilotC-Nvim/CopilotChat.nvim',
+        event = 'VeryLazy',
+        dependencies = {
+          { 'nvim-telescope/telescope.nvim' }, -- Use telescope for help actions
+          { 'nvim-lua/plenary.nvim' },
+        },
+        -- Show help actions with telescope
+        {
+          '<leader>cch',
+          function()
+            require('CopilotChat.code_actions').show_help_actions()
+          end,
+          desc = 'CopilotChat - Help actions',
+        },
+        -- Show prompts actions with telescope
+        {
+          '<leader>ccp',
+          function()
+            require('CopilotChat.code_actions').show_prompt_actions()
+          end,
+          desc = 'CopilotChat - Help actions',
+        },
+        {
+          '<leader>ccp',
+          ":lua require('CopilotChat.code_actions').show_prompt_actions(true)<CR>",
+          mode = 'x',
+          desc = 'CopilotChat - Prompt actions',
+        },
       },
     },
   },

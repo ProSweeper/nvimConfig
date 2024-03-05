@@ -3,11 +3,22 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.o.fileformats = 'unix'
+-- Set the number of space characters inserted for indentation
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+
+vim.o.eol = true
+vim.o.fixeol = false
+vim.opt.colorcolumn = '81'
+
+-- If you want to use spaces instead of actual tab characters, also add:
+vim.o.expandtab = true -- Convert tabs to spaces
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -46,6 +57,8 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.termguicolors = true
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
