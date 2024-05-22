@@ -73,50 +73,10 @@ return {
             'filename',
           },
         },
-        lualine_x = {
-          function()
-            local ok, pomo = pcall(require, 'pomo')
-            if not ok then
-              return ''
-            end
-
-            local timer = pomo.get_first_to_finish()
-            if timer == nil then
-              return ''
-            end
-
-            return '󰄉 ' .. tostring(timer)
-          end,
-          {
-            'copilot',
-            -- Default values
-            symbols = {
-              status = {
-                icons = {
-                  enabled = ' ',
-                  sleep = ' ', -- auto-trigger disabled
-                  disabled = ' ',
-                  warning = ' ',
-                  unknown = ' ',
-                },
-                hl = {
-                  enabled = '#50FA7B',
-                  sleep = '#AEB7D0',
-                  disabled = '#6272A4',
-                  warning = '#FFB86C',
-                  unknown = '#FF5555',
-                },
-              },
-              spinners = require('copilot-lualine.spinners').dots,
-              spinner_color = '#6272A4',
-            },
-            show_colors = true,
-            show_loading = true,
-          },
-          -- "encoding",
-          -- "fileformat",
-          -- "filetype",
-        },
+        lualine_x = {},
+        -- "encoding",
+        -- "fileformat",
+        -- "filetype",
         lualine_y = {
           {
             'filetype',
