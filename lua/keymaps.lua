@@ -37,6 +37,9 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
+-- Set file format to Unix
+vim.api.nvim_set_keymap('n', '<leader>F', ':set ff=unix<CR>', { desc = 'set file type to unix', noremap = true, silent = true })
+
 -- Unsure what this does, tbh
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')

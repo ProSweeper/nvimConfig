@@ -23,7 +23,7 @@ return {
       vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = 'none' })
       vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
       vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#FFFFFF' })
+      -- vim.api.nvim_set_hl(0, 'Comment', { fg = '#FFFFFF' })
     end,
   },
 }

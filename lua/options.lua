@@ -9,7 +9,7 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
 vim.o.eol = true
-vim.o.fixeol = false
+vim.o.fixeol = true
 vim.opt.colorcolumn = '81'
 
 -- If you want to use spaces instead of actual tab characters, also add:

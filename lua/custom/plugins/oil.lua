@@ -49,8 +49,8 @@ return {
     keymaps = {
       ['g?'] = 'actions.show_help',
       ['<CR>'] = 'actions.select',
-      ['<C-s>'] = 'actions.select_vsplit',
-      ['<C-h>'] = 'actions.select_split',
+      ['<C-x>'] = 'actions.select_vsplit',
+      ['<C-v>'] = 'actions.select_split',
       ['<C-t>'] = 'actions.select_tab',
       ['<C-p>'] = 'actions.preview',
       ['<C-c>'] = 'actions.close',
@@ -138,7 +138,7 @@ return {
       },
     },
   },
-  vim.keymap.set('n', '<leader>e', "<cmd>lua require('oil').toggle_float()<CR>", { desc = 'Oil' }),
+  vim.keymap.set('n', '<leader>-', "<cmd>lua require('oil').toggle_float()<CR>", { desc = 'Oil' }),
   -- Optional dependencies
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
