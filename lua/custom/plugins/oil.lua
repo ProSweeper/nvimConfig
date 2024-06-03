@@ -138,7 +138,7 @@ return {
       },
     },
   },
-  vim.keymap.set('n', '<leader>-', "<cmd>lua require('oil').toggle_float()<CR>", { desc = 'Oil' }),
+  vim.keymap.set('n', '-', "<cmd>lua require('oil').toggle_float()<CR>", { desc = 'Oil' }),
   -- Optional dependencies
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }

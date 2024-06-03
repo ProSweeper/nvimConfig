@@ -8,7 +8,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -50,16 +50,16 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- vim fugitive bindings
-vim.keymap.set('n', '<leader>Gd', function()
+vim.keymap.set('n', '<leader>gd', function()
   vim.api.nvim_command 'Gvdiffsplit!'
 end, { desc = 'verticle diff split' })
-vim.keymap.set('n', '<leader>Gr', function()
+vim.keymap.set('n', '<leader>g<Right>', function()
   vim.api.nvim_command 'diffget //3'
 end, { desc = 'get right diff' })
-vim.keymap.set('n', '<leader>Gl', function()
+vim.keymap.set('n', '<leader>g<Left>', function()
   vim.api.nvim_command 'diffget //2'
 end, { desc = 'get left diff' })
-vim.keymap.set('n', '<leader>Ga', function()
+vim.keymap.set('n', '<leader>ga', function()
   vim.api.nvim_command 'Gwrite'
 end, { desc = 'git add %' })
 
