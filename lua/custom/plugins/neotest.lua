@@ -8,6 +8,7 @@ local neotest_config = function()
         end,
       },
       require 'neotest-dotnet',
+      require 'neotest-golang',
     },
     consumers = {},
   }
@@ -44,6 +45,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'marilari88/neotest-vitest',
     'Issafalcon/neotest-dotnet',
+    'fredrikaverpil/neotest-golang',
   },
   config = neotest_config,
 }
