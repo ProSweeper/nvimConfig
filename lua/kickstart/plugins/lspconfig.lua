@@ -168,6 +168,8 @@ return {
         'gopls',
         'volar',
         'tsserver',
+        'omnisharp',
+        'csharpier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
