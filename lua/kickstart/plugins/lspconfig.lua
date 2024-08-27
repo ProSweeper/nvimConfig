@@ -167,6 +167,7 @@ return {
         'stylua', -- Used to format lua code
         'gopls',
         'volar',
+        'gopls',
         'tsserver',
         'omnisharp',
         'csharpier',
