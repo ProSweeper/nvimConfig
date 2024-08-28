@@ -11,17 +11,17 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
+    { '\\', ':Neotree reveal right<CR>', desc = 'NeoTree reveal' },
   },
   opts = {
     filesystem = {
       filtered_items = {
         visible = true, -- when true, they will just be displayed differently than normal items
-        hide_dotfiles = true,
-        hide_gitignored = true,
+        hide_dotfiles = false,
+        hide_gitignored = false,
         hide_hidden = true, -- only works on Windows for hidden files/directories
         hide_by_name = {
-          --"node_modules"
+          'node_modules',
         },
         hide_by_pattern = { -- uses glob style patterns
           --"*.meta",
