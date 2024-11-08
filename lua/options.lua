@@ -63,7 +63,10 @@ vim.opt.termguicolors = true
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
-vim.cmd [[highlight LineNr guifg=#C0C0C0]]
+vim.cmd [[highlight CursorLineNr guifg=#89dceb]]
+vim.cmd [[highlight LineNr guifg=#89dceb]]
+vim.cmd [[highlight LineNrAbove guifg=#a6e3a1]]
+vim.cmd [[highlight LineNrBelow guifg=#eba0ac]]
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
