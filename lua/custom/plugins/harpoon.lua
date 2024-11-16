@@ -45,8 +45,14 @@ return {
       end,
     }
   end,
-  require('which-key').register {
-    ['<C-e>'] = { name = 'Harpoon Menu', _ = 'which_key_ignore' },
-    ['<leader>a'] = { name = 'Harpoon [A]dd', _ = 'which_key_ignore' },
+  require('which-key').add {
+    --   ['<C-e>'] = { name = 'Harpoon Menu', _ = 'which_key_ignore' },
+    --   ['<leader>a'] = { name = 'Harpoon [A]dd', _ = 'which_key_ignore' },
+    -- {
+    { '<C-e>', group = 'Harpoon Menu' },
+    { '<C-e>_', hidden = true },
+    { '<leader>a', group = 'Harpoon [A]dd' },
+    { '<leader>a_', hidden = true },
   },
+  -- },
 }

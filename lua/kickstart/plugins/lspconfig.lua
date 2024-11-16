@@ -1,4 +1,17 @@
 return {
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+  { 'Bilal2453/luvit-meta', lazy = true },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -9,8 +22,8 @@ return {
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
-
-      { 'folke/neodev.nvim', opts = {} },
+      -- Allows extra capabilities provided by nvim-cmp
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -117,7 +130,7 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {
+        ts_ls = {
           init_options = {
             plugins = {
               {
@@ -129,13 +142,38 @@ return {
           },
           filetypes = {
             'javascript',
-            'typescript',
-            'vue',
+            -- 'typescript',
+            -- 'vue',
           },
+          root_dir = require('lspconfig').util.root_pattern 'package.json',
         },
         volar = {},
         --
-
+        denols = {
+          cmd = { 'deno', 'lsp' },
+          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', '.git'),
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'javascript.jsx',
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
+            'vue',
+          },
+          settings = {
+            deno = {
+              enable = true,
+              suggest = {
+                imports = {
+                  hosts = {
+                    ['https://deno.land'] = true,
+                  },
+                },
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -166,9 +204,10 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'gopls',
+        'denols',
         'volar',
         'gopls',
-        'tsserver',
+        'ts_ls',
         'omnisharp',
         'csharpier',
       })

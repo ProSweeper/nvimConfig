@@ -27,14 +27,14 @@ return {
       require('trouble').toggle 'lsp_references'
     end)
   end,
-  wk.register {
-    ['<leader>x'] = {
-      name = '+trouble',
-      x = { 'toggle' },
-      w = { 'workspace diagnostics' },
-      d = { 'document diagnostics' },
-      q = { 'quick fix' },
-      l = { 'loclist' },
+  wk.add {
+    {
+      { '<leader>x', group = 'trouble' },
+      { '<leader>xd', desc = 'document diagnostics' },
+      { '<leader>xl', desc = 'loclist' },
+      { '<leader>xq', desc = 'quick fix' },
+      { '<leader>xw', desc = 'workspace diagnostics' },
+      { '<leader>xx', desc = 'toggle' },
     },
   },
 }
