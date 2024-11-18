@@ -16,7 +16,7 @@ local neotest_config = function()
   local map_opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap(
     'n',
-    '<leader>tt',
+    '<leader>Tt',
     "<cmd>lua require('neotest').run.run(vim.fn.expand '%')<CR>",
     { noremap = true, silent = true, desc = 'Run test file' }
   )
