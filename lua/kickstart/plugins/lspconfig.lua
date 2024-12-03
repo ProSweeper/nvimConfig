@@ -142,8 +142,8 @@ return {
           },
           filetypes = {
             'javascript',
-            -- 'typescript',
-            -- 'vue',
+            'typescript',
+            'vue',
           },
           root_dir = require('lspconfig').util.root_pattern 'package.json',
         },
@@ -156,10 +156,10 @@ return {
             'javascript',
             'javascriptreact',
             'javascript.jsx',
-            'typescript',
+            -- 'typescript',
             'typescriptreact',
             'typescript.tsx',
-            'vue',
+            -- 'vue',
           },
           settings = {
             deno = {
@@ -203,8 +203,6 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'gopls',
-        'denols',
         'volar',
         'gopls',
         'ts_ls',

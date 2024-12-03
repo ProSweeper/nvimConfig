@@ -37,7 +37,9 @@ return {
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'deno', 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'prettierd', stop_after_first = true },
+        typescript = { 'prettierd', stop_after_first = true },
+        vue = { 'prettierd', stop_after_first = true },
       },
     },
   },
