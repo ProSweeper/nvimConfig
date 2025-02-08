@@ -28,12 +28,8 @@ return {
       conceallevel = 3,
       concealcursor = 'nvic',
     },
-    -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-    delete_to_trash = false,
     -- Skip the confirmation popup for simple operations
     skip_confirm_for_simple_edits = true,
-    -- Change this to customize the command used when deleting to trash
-    trash_command = 'trash-put',
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
     prompt_save_on_select_new_entry = true,
     -- Oil will automatically delete hidden buffers after this delay
@@ -55,7 +51,7 @@ return {
       ['<C-p>'] = 'actions.preview',
       ['<C-c>'] = 'actions.close',
       ['<C-l>'] = 'actions.refresh',
-      ['-'] = 'actions.parent',
+      ['+'] = 'actions.parent',
       ['_'] = 'actions.open_cwd',
       ['`'] = 'actions.cd',
       ['~'] = 'actions.tcd',
@@ -64,7 +60,7 @@ return {
       ['g.'] = 'actions.toggle_hidden',
     },
     -- Set to false to disable all of the above keymaps
-    use_default_keymaps = true,
+    use_default_keymaps = false,
     -- Oil
     view_options = {
       -- Show files and directories that start with "."
