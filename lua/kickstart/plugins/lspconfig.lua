@@ -144,35 +144,39 @@ return {
             'javascript',
             'typescript',
             'vue',
+            'spec',
           },
           root_dir = require('lspconfig').util.root_pattern 'package.json',
         },
         volar = {},
         --
-        denols = {
-          cmd = { 'deno', 'lsp' },
-          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', '.git'),
-          filetypes = {
-            'javascript',
-            'javascriptreact',
-            'javascript.jsx',
-            -- 'typescript',
-            'typescriptreact',
-            'typescript.tsx',
-            -- 'vue',
-          },
-          settings = {
-            deno = {
-              enable = true,
-              suggest = {
-                imports = {
-                  hosts = {
-                    ['https://deno.land'] = true,
-                  },
-                },
-              },
-            },
-          },
+        -- denols = {
+        --   cmd = { 'deno', 'lsp' },
+        --   root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', '.git'),
+        --   filetypes = {
+        --     'javascript',
+        --     'javascriptreact',
+        --     'javascript.jsx',
+        --     -- 'typescript',
+        --     'typescriptreact',
+        --     'typescript.tsx',
+        --     -- 'vue',
+        --   },
+        --   settings = {
+        --     deno = {
+        --       enable = true,
+        --       suggest = {
+        --         imports = {
+        --           hosts = {
+        --             ['https://deno.land'] = true,
+        --           },
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
+        somesass_ls = {
+          filetypes = { 'sass', 'scss', 'css', 'vue' },
         },
         lua_ls = {
           -- cmd = {...},
