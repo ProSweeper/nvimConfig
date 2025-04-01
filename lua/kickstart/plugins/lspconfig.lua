@@ -170,38 +170,38 @@ return {
           },
           filetypes = {
             'javascript',
-            -- 'typescript',
-            -- 'vue',
+            'typescript',
+            'vue',
           },
           root_dir = require('lspconfig').util.root_pattern 'package.json',
         },
         volar = {},
         --
-        denols = {
-          cmd = { 'deno', 'lsp' },
-          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', '.git'),
-          filetypes = {
-            'javascript',
-            'javascriptreact',
-            'javascript.jsx',
-            'typescript',
-            'typescriptreact',
-            'typescript.tsx',
-            'vue',
-          },
-          settings = {
-            deno = {
-              enable = true,
-              suggest = {
-                imports = {
-                  hosts = {
-                    ['https://deno.land'] = true,
-                  },
-                },
-              },
-            },
-          },
-        },
+        -- denols = {
+        --   cmd = { 'deno', 'lsp' },
+        --   root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', '.git'),
+        --   filetypes = {
+        --     'javascript',
+        --     'javascriptreact',
+        --     'javascript.jsx',
+        --     'typescript',
+        --     'typescriptreact',
+        --     'typescript.tsx',
+        --     'vue',
+        --   },
+        --   settings = {
+        --     deno = {
+        --       enable = true,
+        --       suggest = {
+        --         imports = {
+        --           hosts = {
+        --             ['https://deno.land'] = true,
+        --           },
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -232,14 +232,15 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'gopls',
-        'denols',
+        -- 'denols',
         'volar',
-        'gopls',
         'ts_ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_installation = true,
+        ensure_installed = ensure_installed,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
