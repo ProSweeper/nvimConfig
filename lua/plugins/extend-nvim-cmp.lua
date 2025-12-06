@@ -1,0 +1,43 @@
+-- do not show placeholders in snippet for auto complete
+return {
+  -- "hrsh7th/nvim-cmp",
+  -- -- Load nvim-cmp after nvim-lspconfig
+  -- dependencies = { "neovim/nvim-lspconfig" },
+  -- opts = function(_, opts)
+  --   local cmp = require("cmp")
+  --   local types = require("cmp.types")
+  --
+  --   -- This is the custom function that will run when you press Enter
+  --   local confirm_and_add_parentheses = function(fallback)
+  --     local entry = cmp.get_selected_entry()
+  --
+  --     -- If no item is selected, or if the item is not a function/method,
+  --     -- use the default behavior (fallback).
+  --     if
+  --       not entry
+  --       or not ({
+  --         [types.lsp.CompletionItemKind.Function] = true,
+  --         [types.lsp.CompletionItemKind.Method] = true,
+  --         [types.lsp.CompletionItemKind.Constructor] = true,
+  --       })[entry:get_kind()]
+  --     then
+  --       cmp.mapping.confirm({ select = true })(fallback)
+  --       return
+  --     end
+  --
+  --     -- If the item IS a function/method, we handle it manually.
+  --     local item = entry:get_completion_item()
+  --     local text = item.label .. "()"
+  --
+  --     -- Replace the current completion with the text and parentheses.
+  --     vim.api.nvim_chan_send(0, vim.api.nvim_replace_termcodes(text, true, false, true))
+  --     -- Move the cursor back one character to be inside the ().
+  --     vim.api.nvim_chan_send(0, vim.api.nvim_replace_termcodes("<Left>", true, false, true))
+  --   end
+  --
+  --   -- We remap the <CR> (Enter) key to our custom function.
+  --   opts.mapping["<CR>"] = cmp.mapping(confirm_and_add_parentheses, { "i", "s" })
+  --
+  --   return opts
+  -- end,
+}
