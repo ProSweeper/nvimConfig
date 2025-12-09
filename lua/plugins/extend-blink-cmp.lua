@@ -9,7 +9,7 @@ return {
       override_brackets_for_filetypes = {},
       kind_resolution = {
         enabled = true,
-        blocked_filetypes = {}, -- Remove vue, typescriptreact, javascriptreact from blocked
+        blocked_filetypes = {},
       },
       semantic_token_resolution = {
         enabled = true,
